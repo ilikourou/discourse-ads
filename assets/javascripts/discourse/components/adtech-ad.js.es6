@@ -14,7 +14,7 @@ var banner_topic_list_top = Discourse.SiteSettings.adtech_topic_list_top_code;
 const mobileView = Discourse.Site.currentProp('mobileView');
 
 function initAdtechTags() {
-    ADTECH.enqueueAd(banner_topic_list_top);
+    ADTECH.enqueueAd(6232308);
 
     ADTECH.executeQueue();
 }
