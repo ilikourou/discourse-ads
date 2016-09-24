@@ -63,7 +63,7 @@ export default Ember.Component.extend({
     init: function() {
         /*this.set('ad_width', data[this.placement]["ad_width"] );
         this.set('ad_height', data[this.placement]["ad_height"] );*/
-        this.set('ad_code', data[this.placement]["ad_code"] );
+        this.set('ad_code', 6232308 );
         this.set('ad_mobile_code', data[this.placement]["ad_mobile_code"] );
         initAdtechTags();
         this._super();
