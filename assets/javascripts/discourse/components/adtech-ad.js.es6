@@ -13,7 +13,10 @@ const mobileView = Discourse.Site.currentProp('mobileView');
 
 // On each page change, the child is removed and elements part of Adsense's googleads are removed/undefined.
 function changePage() {
+    /*ADTECH.enqueueAd(6232308);
 
+    ADTECH.executeQueue();*/
+    alert('alert alert alert!');
 }
 
 function oldPluginCode() {
