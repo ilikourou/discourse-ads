@@ -9,10 +9,12 @@ var currentUser = Discourse.User.current();
 var mobile_width = 320;
 var mobile_height = 50;
 
+var banner_topic_list_top = Discourse.SiteSettings.adtech_topic_list_top_code;
+
 const mobileView = Discourse.Site.currentProp('mobileView');
 
 function initAdtechTags() {
-    ADTECH.enqueueAd(6232308);
+    ADTECH.enqueueAd(banner_topic_list_top);
 
     ADTECH.executeQueue();
 }
@@ -41,10 +43,10 @@ var data = {
 
 if (Discourse.SiteSettings.adtech_publisher_code) {
     if (!mobileView && Discourse.SiteSettings.adtech_topic_list_top_code) {
-        data["topic-list-top"]["ad_code"] = Discourse.SiteSettings.adtech_topic_list_top_code;
+        data["topic-list-top"]["ad_code"] = banner_topic_list_top;
     }
     if (mobileView && Discourse.SiteSettings.adtech_mobile_topic_list_top_code) {
-        data["topic-list-top"]["ad_mobile_code"] = Discourse.SiteSettings.adtech_topic_list_top_code;
+        data["topic-list-top"]["ad_mobile_code"] = banner_topic_list_top;
     }
 }
 
@@ -65,7 +67,6 @@ export default Ember.Component.extend({
         this.set('ad_height', data[this.placement]["ad_height"] );*/
         this.set('ad_code', data[this.placement]["ad_code"] );
         this.set('ad_mobile_code', data[this.placement]["ad_mobile_code"] );
-        initAdtechTags();
         this._super();
     },
 
