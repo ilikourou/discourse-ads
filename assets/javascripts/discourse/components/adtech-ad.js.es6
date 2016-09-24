@@ -65,11 +65,12 @@ export default Ember.Component.extend({
         this.set('ad_height', data[this.placement]["ad_height"] );*/
         this.set('ad_code', data[this.placement]["ad_code"] );
         this.set('ad_mobile_code', data[this.placement]["ad_mobile_code"] );
+        initAdtechTags();
         this._super();
     },
 
     didInsertElement: function() {
-        initAdtechTags();
+        //initAdtechTags();
     },
 
     checkTrustLevels: function() {
