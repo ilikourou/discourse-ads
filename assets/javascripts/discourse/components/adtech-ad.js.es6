@@ -9,28 +9,18 @@ var currentUser = Discourse.User.current();
 var mobile_width = 320;
 var mobile_height = 50;
 
-var banner_topic_list_top = Discourse.SiteSettings.adtech_topic_list_top_code;
-
 const mobileView = Discourse.Site.currentProp('mobileView');
 
 function initAdtechTags() {
-    ADTECH.enqueueAd(banner_topic_list_top);
+    ADTECH.enqueueAd(6232308);
 
     ADTECH.executeQueue();
-
-    alert('banner is: ' + banner_topic_list_top);
 }
 
 // On each page change, the child is removed and elements part of Adsense's googleads are removed/undefined.
 function changePage() {
-    //initAdtechTags();
-    //alert(banner_topic_list_top);
+    initAdtechTags();
     //alert('alert alert alert!');
-    ADTECH.enqueueAd(banner_topic_list_top);
-
-    ADTECH.executeQueue();
-
-    alert('banner is: ' + banner_topic_list_top);
 }
 
 function oldPluginCode() {
@@ -51,10 +41,10 @@ var data = {
 
 if (Discourse.SiteSettings.adtech_publisher_code) {
     if (!mobileView && Discourse.SiteSettings.adtech_topic_list_top_code) {
-        data["topic-list-top"]["ad_code"] = banner_topic_list_top;
+        data["topic-list-top"]["ad_code"] = Discourse.SiteSettings.adtech_topic_list_top_code;
     }
     if (mobileView && Discourse.SiteSettings.adtech_mobile_topic_list_top_code) {
-        data["topic-list-top"]["ad_mobile_code"] = banner_topic_list_top;
+        data["topic-list-top"]["ad_mobile_code"] = Discourse.SiteSettings.adtech_topic_list_top_code;
     }
 }
 
@@ -73,8 +63,9 @@ export default Ember.Component.extend({
     init: function() {
         /*this.set('ad_width', data[this.placement]["ad_width"] );
         this.set('ad_height', data[this.placement]["ad_height"] );*/
-        this.set('ad_code', 6232308 );
+        this.set('ad_code', data[this.placement]["ad_code"] );
         this.set('ad_mobile_code', data[this.placement]["ad_mobile_code"] );
+        initAdtechTags();
         this._super();
     },
 
