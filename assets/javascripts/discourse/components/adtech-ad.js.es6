@@ -11,11 +11,15 @@ var mobile_height = 50;
 
 const mobileView = Discourse.Site.currentProp('mobileView');
 
-// On each page change, the child is removed and elements part of Adsense's googleads are removed/undefined.
-function changePage() {
+function initAdtechTags() {
     ADTECH.enqueueAd(6232308);
 
     ADTECH.executeQueue();
+}
+
+// On each page change, the child is removed and elements part of Adsense's googleads are removed/undefined.
+function changePage() {
+    initAdtechTags();
     //alert('alert alert alert!');
 }
 
@@ -65,7 +69,7 @@ export default Ember.Component.extend({
     },
 
     didInsertElement: function() {
-        alert('testttt');
+        initAdtechTags();
     },
 
     checkTrustLevels: function() {
