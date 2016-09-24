@@ -41,7 +41,7 @@ var data = {
     "post-bottom" : {}
 };
 
-if (Discourse.SiteSettings.adtech_publisher_code) {
+if (banner_banner_topic_list_top) {
     if (!mobileView && Discourse.SiteSettings.adtech_topic_list_top_code) {
         data["topic-list-top"]["ad_code"] = banner_banner_topic_list_top;
     }
