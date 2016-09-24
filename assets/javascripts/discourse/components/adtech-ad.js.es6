@@ -64,6 +64,10 @@ export default Ember.Component.extend({
         this._super();
     },
 
+    didInsertElement: function() {
+        alert('testttt');
+    },
+
     checkTrustLevels: function() {
         return !((currentUser) && (currentUser.get('trust_level') > Discourse.SiteSettings.adtech_through_trust_level));
     }.property('trust_level'),
