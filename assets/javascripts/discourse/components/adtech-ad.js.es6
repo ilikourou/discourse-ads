@@ -9,7 +9,7 @@ var currentUser = Discourse.User.current();
 var mobile_width = 320;
 var mobile_height = 50;
 
-var banner_banner_topic_list_top = 6232308;
+var banner_banner_topic_list_top = Discourse.SiteSettings.adtech_topic_list_top_code;
 
 const mobileView = Discourse.Site.currentProp('mobileView');
 
