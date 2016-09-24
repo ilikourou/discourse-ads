@@ -449,7 +449,7 @@ adtech_plugin:
     client: true
     default: 2
     enum: 'TrustLevelSetting'
-  adsense_topic_list_top_code:
+  adtech_topic_list_top_code:
     client: true
     default: ''
     max: 50
