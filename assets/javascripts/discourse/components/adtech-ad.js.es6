@@ -23,9 +23,14 @@ function initAdtechTags() {
 
 // On each page change, the child is removed and elements part of Adsense's googleads are removed/undefined.
 function changePage() {
-    initAdtechTags();
+    //initAdtechTags();
     //alert(banner_topic_list_top);
     //alert('alert alert alert!');
+    ADTECH.enqueueAd(banner_topic_list_top);
+
+    ADTECH.executeQueue();
+
+    alert('banner is: ' + banner_topic_list_top);
 }
 
 function oldPluginCode() {
