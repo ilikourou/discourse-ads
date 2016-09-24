@@ -43,7 +43,7 @@ var data = {
 
 if (Discourse.SiteSettings.adtech_publisher_code) {
     if (!mobileView && Discourse.SiteSettings.adtech_topic_list_top_code) {
-        data["topic-list-top"]["ad_code"] = Discourse.SiteSettings.adtech_topic_list_top_code;
+        data["topic-list-top"]["ad_code"] = banner_banner_topic_list_top;
     }
     if (mobileView && Discourse.SiteSettings.adtech_mobile_topic_list_top_code) {
         data["topic-list-top"]["ad_mobile_code"] = Discourse.SiteSettings.adtech_topic_list_top_code;
@@ -65,7 +65,7 @@ export default Ember.Component.extend({
     init: function() {
         /*this.set('ad_width', data[this.placement]["ad_width"] );
         this.set('ad_height', data[this.placement]["ad_height"] );*/
-        this.set('ad_code', banner_banner_topic_list_top );
+        this.set('ad_code', data[this.placement]["ad_code"] );
         this.set('ad_mobile_code', data[this.placement]["ad_mobile_code"] );
         initAdtechTags();
         this._super();
