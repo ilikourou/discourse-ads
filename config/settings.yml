@@ -468,3 +468,12 @@ adtech_plugin:
     default: ''
     max: 50
     regex: '^[\d]*$'
+  adtech_post_n_second_number:
+    client: true
+    default: ''
+    min: 1
+  adtech_post_n_second_code:
+    client: true
+    default: ''
+    max: 50
+    regex: '^[\d]*$'

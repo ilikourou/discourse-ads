@@ -19,8 +19,12 @@ export default {
         return this.isNthPost(parseInt(siteSettings.amazon_nth_post_code));
       }.property('post_number'),
 
-      postSpecificCountAdtech: function() {
+      postSpecificCountAdtechFirst: function() {
           return this.isExactlyNthPost(parseInt(siteSettings.adtech_post_n_first_number));
+      }.property('post_number'),
+
+      postSpecificCountAdtechSecond: function() {
+          return this.isExactlyNthPost(parseInt(siteSettings.adtech_post_n_second_number));
       }.property('post_number'),
 
       isNthPost: function(n) {
@@ -46,6 +50,12 @@ export default {
           templateName: 'connectors/post-bottom/discourse-adplugin',
           context: 'model'
         });
+      });
+      api.decorateWidget('post:after', dec => {
+          return dec.connect({
+              templateName: 'connectors/post-bottom-second/discourse-adplugin',
+              context: 'model'
+          });
       });
     });
   }
