@@ -54,10 +54,10 @@ if (banner_category_top || banner_post_top || banner_post_n_first || banner_post
         data["topic-above-post-stream"]["ad_code"] = banner_post_top;
     }
     if (banner_post_n_first) {
-        data["post-bottom1"]["ad_code"] = banner_post_n_first;
+        data["post-bottom-first"]["ad_code"] = banner_post_n_first;
     }
     if (banner_post_n_second) {
-        data["post-bottom2"]["ad_code"] = banner_post_n_second;
+        data["post-bottom-second"]["ad_code"] = banner_post_n_second;
     }
 }
 
