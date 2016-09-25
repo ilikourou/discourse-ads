@@ -12,7 +12,6 @@ var mobile_height = 50;
 var banner_category_top = Discourse.SiteSettings.adtech_category_top_code;
 var banner_post_top = Discourse.SiteSettings.adtech_post_top_code;
 var banner_post_n_first = Discourse.SiteSettings.adtech_post_n_first_code;
-var banner_post_n_second = Discourse.SiteSettings.adtech_post_n_second_code;
 
 const mobileView = Discourse.Site.currentProp('mobileView');
 
@@ -46,7 +45,7 @@ var data = {
     "post-bottom" : {}
 };
 
-if (banner_category_top || banner_post_top || banner_post_n_first || banner_post_n_second) {
+if (banner_category_top || banner_post_top || banner_post_n_first) {
     if (banner_category_top) {
         data["topic-list-top"]["ad_code"] = banner_category_top;
     }
@@ -54,10 +53,7 @@ if (banner_category_top || banner_post_top || banner_post_n_first || banner_post
         data["topic-above-post-stream"]["ad_code"] = banner_post_top;
     }
     if (banner_post_n_first) {
-        data["post-bottom-first"]["ad_code"] = banner_post_n_first;
-    }
-    if (banner_post_n_second) {
-        data["post-bottom-second"]["ad_code"] = banner_post_n_second;
+        data["post-bottom"]["ad_code"] = banner_post_n_first;
     }
 }
 

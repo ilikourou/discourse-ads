@@ -19,12 +19,8 @@ export default {
         return this.isNthPost(parseInt(siteSettings.amazon_nth_post_code));
       }.property('post_number'),
 
-      postSpecificCountAdtechFirst: function() {
+      postSpecificCountAdtech: function() {
           return this.isExactlyNthPost(parseInt(siteSettings.adtech_post_n_first_number));
-      }.property('post_number'),
-
-      postSpecificCountAdtechSecond: function() {
-          return this.isExactlyNthPost(parseInt(siteSettings.adtech_post_n_second_number));
       }.property('post_number'),
 
       isNthPost: function(n) {
