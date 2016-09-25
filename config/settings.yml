@@ -477,3 +477,8 @@ adtech_plugin:
     default: ''
     max: 50
     regex: '^[\d]*$'
+  adtech_post_bottom_code:
+    client: true
+    default: ''
+    max: 50
+    regex: '^[\d]*$'
