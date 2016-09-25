@@ -16,9 +16,7 @@ var banner_post_n_first = Discourse.SiteSettings.adtech_post_n_first_code;
 const mobileView = Discourse.Site.currentProp('mobileView');
 
 function initAdtechTags() {
-    // sto enqueueAd i parametros einai number, ama valw to var banner_category_top pou einai string den doulevei!! opote prepei na to metatrepsw!!
-    //ADTECH.enqueueAd(6232308);
-    ADTECH.enqueueAd(Number(banner_category_top));
+    /*ADTECH.enqueueAd(Number(banner_category_top));*/
 
     ADTECH.executeQueue();
 }
@@ -48,12 +46,15 @@ var data = {
 if (banner_category_top || banner_post_top || banner_post_n_first) {
     if (banner_category_top) {
         data["topic-list-top"]["ad_code"] = banner_category_top;
+        ADTECH.enqueueAd(Number(banner_category_top));
     }
     if (banner_post_top) {
         data["topic-above-post-stream"]["ad_code"] = banner_post_top;
+        ADTECH.enqueueAd(Number(banner_post_top));
     }
     if (banner_post_n_first) {
         data["post-bottom"]["ad_code"] = banner_post_n_first;
+        ADTECH.enqueueAd(Number(banner_post_n_first));
     }
 }
 
@@ -76,7 +77,7 @@ export default Ember.Component.extend({
     },
 
     didInsertElement: function() {
-        //initAdtechTags();
+        initAdtechTags();
     },
 
     checkTrustLevels: function() {
