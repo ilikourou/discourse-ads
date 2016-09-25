@@ -85,7 +85,7 @@ export default Ember.Component.extend({
 
     init: function() {
         this.set('ad_code', data[this.placement]["ad_code"] );
-        initAdtechTags();
+        //initAdtechTags();
         this._super();
     },
 
