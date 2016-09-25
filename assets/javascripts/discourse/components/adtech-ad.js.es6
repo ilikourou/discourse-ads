@@ -13,19 +13,21 @@ const mobileView = Discourse.Site.currentProp('mobileView');
 
 function initAdtechTags() {
     /*if (banner_category_top) {
-        ADTECH.enqueueAd(Number(banner_category_top));
-    }
-    if (banner_post_top) {
-        ADTECH.enqueueAd(Number(banner_post_top));
-    }
-    if (banner_post_n_first) {
-        ADTECH.enqueueAd(Number(banner_post_n_first));
-    }
-    if (banner_post_n_second) {
-        ADTECH.enqueueAd(Number(banner_post_n_second));
-    }*/
+     ADTECH.enqueueAd(Number(banner_category_top));
+     }
+     if (banner_post_top) {
+     ADTECH.enqueueAd(Number(banner_post_top));
+     }
+     if (banner_post_n_first) {
+     ADTECH.enqueueAd(Number(banner_post_n_first));
+     }
+     if (banner_post_n_second) {
+     ADTECH.enqueueAd(Number(banner_post_n_second));
+     }*/
 
-    ADTECH.executeQueue();
+    if (typeof ADTECH !== 'undefined') { //we check if ADTECH var is defined (and not removed by Adblock)
+        ADTECH.executeQueue();
+    }
 }
 
 // On each page change, the child is removed and elements part of Adsense's googleads are removed/undefined.
@@ -74,7 +76,9 @@ export default Ember.Component.extend({
 
     init: function() {
         this.set('ad_code', data[this.placement]["ad_code"] );
-        ADTECH.enqueueAd(Number(data[this.placement]["ad_code"]));
+        if (typeof ADTECH !== 'undefined') { //we check if ADTECH var is defined (and not removed by Adblock)
+            ADTECH.enqueueAd(Number(data[this.placement]["ad_code"]));
+        }
         this._super();
     },
 
