@@ -449,7 +449,30 @@ adtech_plugin:
     client: true
     default: 2
     enum: 'TrustLevelSetting'
-  adtech_topic_list_top_code:
+  adtech_category_top_code:
+    client: true
+    default: ''
+    max: 50
+    regex: '^[\d]*$'
+  adtech_post_top_code:
+    client: true
+    default: ''
+    max: 50
+    regex: '^[\d]*$'
+  adtech_post_n_first_number:
+    client: true
+    default: ''
+    min: 1
+  adtech_post_n_first_code:
+    client: true
+    default: ''
+    max: 50
+    regex: '^[\d]*$'
+  adtech_post_n_second_number:
+    client: true
+    default: ''
+    min: 1
+  adtech_post_n_second_code:
     client: true
     default: ''
     max: 50

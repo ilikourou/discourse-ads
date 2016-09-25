@@ -9,12 +9,17 @@ var currentUser = Discourse.User.current();
 var mobile_width = 320;
 var mobile_height = 50;
 
-var banner_topic_list_top = Discourse.SiteSettings.adtech_topic_list_top_code;
+var banner_category_top = Discourse.SiteSettings.adtech_category_top_code;
+var banner_post_top = Discourse.SiteSettings.adtech_post_top_code;
+var banner_post_n_first = Discourse.SiteSettings.adtech_post_n_first_code;
+var banner_post_n_second = Discourse.SiteSettings.adtech_post_n_second_code;
 
 const mobileView = Discourse.Site.currentProp('mobileView');
 
 function initAdtechTags() {
-    ADTECH.enqueueAd(6232308);
+    // sto enqueueAd i parametros einai number, ama valw to var banner_category_top pou einai string den doulevei!! opote prepei na to metatrepsw!!
+    //ADTECH.enqueueAd(6232308);
+    ADTECH.enqueueAd(Number(banner_category_top));
 
     ADTECH.executeQueue();
 }
@@ -41,9 +46,9 @@ var data = {
     "post-bottom" : {}
 };
 
-if (banner_topic_list_top) {
-    if (!mobileView && Discourse.SiteSettings.adtech_topic_list_top_code) {
-        data["topic-list-top"]["ad_code"] = banner_topic_list_top;
+if (banner_category_top) {
+    if (!mobileView && banner_category_top) {
+        data["topic-list-top"]["ad_code"] = banner_category_top;
     }
     if (mobileView && Discourse.SiteSettings.adtech_mobile_topic_list_top_code) {
         data["topic-list-top"]["ad_mobile_code"] = Discourse.SiteSettings.adtech_topic_list_top_code;
