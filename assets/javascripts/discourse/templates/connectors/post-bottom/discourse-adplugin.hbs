@@ -1,3 +1,9 @@
+{{#if postSpecificCountAdtechFirst}}
+    {{adtech-ad placement="post-bottom1" postNumber=post_number}}
+{{/if}}
+{{#if postSpecificCountAdtechSecond}}
+    {{adtech-ad placement="post-bottom2" postNumber=post_number}}
+{{/if}}
 {{#if postSpecificCountAdsense}}
 	{{google-adsense placement="post-bottom" postNumber=post_number}}
 {{/if}}

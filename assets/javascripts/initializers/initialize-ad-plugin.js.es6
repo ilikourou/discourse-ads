@@ -19,12 +19,28 @@ export default {
         return this.isNthPost(parseInt(siteSettings.amazon_nth_post_code));
       }.property('post_number'),
 
+      postSpecificCountAdtechFirst: function() {
+          return this.isExactlyNthPost(parseInt(siteSettings.adtech_post_n_first_number));
+      }.property('post_number'),
+
+      postSpecificCountAdtechSecond: function() {
+          return this.isExactlyNthPost(parseInt(siteSettings.adtech_post_n_second_number));
+      }.property('post_number'),
+
       isNthPost: function(n) {
         if (n && n > 0) {
           return (this.get('post_number') % n) === 0;
         } else {
           return false;
         }
+      },
+
+      isExactlyNthPost: function(n) {
+         if (n && n > 0) {
+             return (this.get('post_number') == n);
+         } else {
+             return false;
+         }
       }
   	});
 
