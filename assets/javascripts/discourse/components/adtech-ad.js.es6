@@ -1,13 +1,7 @@
 import { withPluginApi } from 'discourse/lib/plugin-api';
 import PageTracker from 'discourse/lib/page-tracker';
 
-var ad_width = '';
-var ad_height = '';
-var ad_mobile_width = 320;
-var ad_mobile_height = 50;
 var currentUser = Discourse.User.current();
-var mobile_width = 320;
-var mobile_height = 50;
 
 var banner_category_top = Discourse.SiteSettings.adtech_category_top_code;
 var banner_post_top = Discourse.SiteSettings.adtech_post_top_code;
@@ -17,7 +11,7 @@ var banner_post_n_second = Discourse.SiteSettings.adtech_post_n_second_code;
 const mobileView = Discourse.Site.currentProp('mobileView');
 
 function initAdtechTags() {
-    if (banner_category_top) {
+    /*if (banner_category_top) {
         ADTECH.enqueueAd(Number(banner_category_top));
     }
     if (banner_post_top) {
@@ -28,7 +22,7 @@ function initAdtechTags() {
     }
     if (banner_post_n_second) {
         ADTECH.enqueueAd(Number(banner_post_n_second));
-    }
+    }*/
 
     ADTECH.executeQueue();
 }
@@ -36,7 +30,6 @@ function initAdtechTags() {
 // On each page change, the child is removed and elements part of Adsense's googleads are removed/undefined.
 function changePage() {
     initAdtechTags();
-    //alert('alert alert alert!');
 }
 
 function oldPluginCode() {
@@ -74,21 +67,10 @@ if (banner_category_top || banner_post_top || banner_post_n_first || banner_post
 export default Ember.Component.extend({
     classNames: ['adtech-ad'],
     //loadedGoogletag: false,
-    refreshOnChange: function() {
-        initAdtechTags();
-    },
-
-    ad_width: ad_width,
-    ad_height: ad_height,
-    ad_mobile_width: ad_mobile_width,
-    ad_mobile_height: ad_mobile_height,
-
-    mobile_width: mobile_width,
-    mobile_height: mobile_height,
 
     init: function() {
         this.set('ad_code', data[this.placement]["ad_code"] );
-        //initAdtechTags();
+        ADTECH.enqueueAd(Number(data[this.placement]["ad_code"]));
         this._super();
     },
 
