@@ -74,6 +74,9 @@ if (banner_category_top || banner_post_top || banner_post_n_first || banner_post
 export default Ember.Component.extend({
     classNames: ['adtech-ad'],
     //loadedGoogletag: false,
+    refreshOnChange: function() {
+        initAdtechTags();
+    },
 
     ad_width: ad_width,
     ad_height: ad_height,
