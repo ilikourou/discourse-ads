@@ -20,11 +20,11 @@ export default {
       }.property('post_number'),
 
       postSpecificCountAdtechFirst: function() {
-          return this.isEveryNthPost(parseInt(siteSettings.adtech_post_n_first_number));
+          return this.isExactlyNthPost(parseInt(siteSettings.adtech_post_n_first_number));
       }.property('post_number'),
 
       postSpecificCountAdtechSecond: function() {
-          return this.isEveryNthPost(parseInt(siteSettings.adtech_post_n_second_number));
+          return this.isExactlyNthPost(parseInt(siteSettings.adtech_post_n_second_number));
       }.property('post_number'),
 
       isEveryNthPost: function(n) {
