@@ -8,15 +8,15 @@ export default {
 
   	PostModel.reopen({
   	  postSpecificCountDFP: function() {
-        return this.isNthPost(parseInt(siteSettings.dfp_nth_post_code));
+        return this.isEveryNthPost(parseInt(siteSettings.dfp_nth_post_code));
   	  }.property('post_number'),
 
   	  postSpecificCountAdsense: function() {
-        return this.isNthPost(parseInt(siteSettings.adsense_nth_post_code));
+        return this.isEveryNthPost(parseInt(siteSettings.adsense_nth_post_code));
   	  }.property('post_number'),
 
       postSpecificCountAmazon: function() {
-        return this.isNthPost(parseInt(siteSettings.amazon_nth_post_code));
+        return this.isEveryNthPost(parseInt(siteSettings.amazon_nth_post_code));
       }.property('post_number'),
 
       postSpecificCountAdtechFirst: function() {
