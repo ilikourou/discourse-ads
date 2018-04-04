@@ -14,6 +14,11 @@
       {{amazon-product-links placement="post-bottom" postNumber=model.post_number}}
     {{/if}}
   {{/if}}
+  {{#if model.postSpecificCountAdtechFirst}}
+      {{#if siteSettings.adtech_post_n_first_code}}
+          {{adtech-ad placement="post-bottom" postNumber=model.post_number}}
+      {{/if}}
+  {{/if}}
 {{else}}
   {{#if model.postSpecificCountAdsense}}
     {{#if siteSettings.adsense_post_bottom_code}}
@@ -29,5 +34,10 @@
     {{#if siteSettings.amazon_post_bottom_src_code}}
       {{amazon-product-links placement="post-bottom" postNumber=model.post_number}}
     {{/if}}
+  {{/if}}
+  {{#if model.postSpecificCountAdtechFirst}}
+      {{#if siteSettings.adtech_post_n_first_code}}
+          {{adtech-ad placement="post-bottom" postNumber=model.post_number}}
+      {{/if}}
   {{/if}}
 {{/if}}
