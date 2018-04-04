@@ -9,7 +9,7 @@
     {{amazon-product-links placement="topic-above-suggested"}}
   {{/if}}
   {{#if siteSettings.adtech_post_bottom_code}}
-      {{adtech-ad placement="topic-above-suggested"}}
+      {{adtech-ad placement="topic-above-suggested" listLoading=listLoading}}
   {{/if}}
 {{else}}
   {{#if siteSettings.adsense_topic_above_suggested_code}}
@@ -22,6 +22,6 @@
     {{amazon-product-links placement="topic-above-suggested"}}
   {{/if}}
   {{#if siteSettings.adtech_post_bottom_code}}
-      {{adtech-ad placement="topic-above-suggested"}}
+      {{adtech-ad placement="topic-above-suggested" listLoading=listLoading}}
   {{/if}}
 {{/if}}
