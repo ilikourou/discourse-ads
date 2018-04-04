@@ -95,7 +95,7 @@ export default Ember.Component.extend({
     }.property('ad_width'),
 
     checkTrustLevels: function() {
-        return !((currentUser) && (currentUser.get('trust_level') > Discourse.SiteSettings.adsense_through_trust_level));
+        return !((currentUser) && (currentUser.get('trust_level') > Discourse.SiteSettings.adtech_through_trust_level));
     }.property('trust_level'),
 
     showAd: function() {
