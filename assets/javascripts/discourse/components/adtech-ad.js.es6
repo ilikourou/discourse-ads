@@ -23,11 +23,9 @@ function loadAdtech() {
     }*/
 
     if (typeof ADTECH !== 'undefined') { //we check if ADTECH var is defined (and not removed by Adblock)
-        _promise = ADTECH.executeQueue();
-        _loaded = true;
+        ADTECH.executeQueue();
     }
 
-    return _promise;
 }
 
 function changePage() {
