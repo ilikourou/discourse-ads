@@ -1,5 +1,4 @@
 import loadScript from 'discourse/lib/load-script';
-import { withPluginApi } from 'discourse/lib/plugin-api';
 
 var _loaded = false,
     _promise = null,
@@ -14,32 +13,21 @@ var banner_post_bottom = Discourse.SiteSettings.adtech_post_bottom_code;
 const mobileView = Discourse.Site.currentProp('mobileView');
 
 function loadAdtech() {
-    /*if (_loaded) {
+    if (_loaded) {
         return Ember.RSVP.resolve();
     }
 
     if (_promise) {
         return _promise;
-    }*/
-
-    if (typeof ADTECH !== 'undefined') { //we check if ADTECH var is defined (and not removed by Adblock)
-        ADTECH.executeQueue();
     }
 
-}
+    if (typeof ADTECH !== 'undefined') { //we check if ADTECH var is defined (and not removed by Adblock)
+        _promise = ADTECH.executeQueue();
+        _loaded = true;
+    }
 
-function changePage() {
-    loadAdtech();
+    return _promise;
 }
-
-function oldPluginCode() {
-    PageTracker.current().on('change', changePage);
-}
-
-function watchPageChanges(api) {
-    api.onPageChange(changePage);
-}
-withPluginApi('0.1', watchPageChanges, { noApi: oldPluginCode });
 
 var data = {
     "topic-list-top" : {},
@@ -80,33 +68,31 @@ export default Ember.Component.extend({
         this._super();
     },
 
-    /*_triggerAds() {
+    _triggerAds() {
         this.set('adRequested', true);
         loadAdtech();
-    },*/
+    },
 
     didInsertElement() {
-        /*this._super();
+        this._super();
 
         if (!this.get('showAd')) { return; }
 
         if (this.get('listLoading')) { return; }
 
-        Ember.run.scheduleOnce('afterRender', this, this._triggerAds);*/
-
-        loadAdtech();
+        Ember.run.scheduleOnce('afterRender', this, this._triggerAds);
     },
 
-    /*waitForLoad: function() {
-     if (this.get('adRequested')) { return; } // already requested that this ad unit be populated
-     if (!this.get('listLoading')) {
-     Ember.run.scheduleOnce('afterRender', this, this._triggerAds);
-     }
-     }.observes('listLoading'),
+    waitForLoad: function() {
+        if (this.get('adRequested')) { return; } // already requested that this ad unit be populated
+        if (!this.get('listLoading')) {
+            Ember.run.scheduleOnce('afterRender', this, this._triggerAds);
+        }
+    }.observes('listLoading'),
 
-     isResponsive: function() {
-     return this.get('ad_width') === 'auto';
-     }.property('ad_width'),*/
+    isResponsive: function() {
+        return this.get('ad_width') === 'auto';
+    }.property('ad_width'),
 
     checkTrustLevels: function() {
         return !((currentUser) && (currentUser.get('trust_level') > Discourse.SiteSettings.adtech_through_trust_level));
