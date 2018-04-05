@@ -74,25 +74,25 @@ export default Ember.Component.extend({
     },
 
     didInsertElement() {
-        this._super();
+        /*this._super();
 
         if (!this.get('showAd')) { return; }
 
-        if (this.get('listLoading')) { return; }
+        if (this.get('listLoading')) { return; }*/
 
         Ember.run.scheduleOnce('afterRender', this, this._triggerAds);
     },
 
-    waitForLoad: function() {
-        if (this.get('adRequested')) { return; } // already requested that this ad unit be populated
-        if (!this.get('listLoading')) {
-            Ember.run.scheduleOnce('afterRender', this, this._triggerAds);
-        }
-    }.observes('listLoading'),
+    /*waitForLoad: function() {
+     if (this.get('adRequested')) { return; } // already requested that this ad unit be populated
+     if (!this.get('listLoading')) {
+     Ember.run.scheduleOnce('afterRender', this, this._triggerAds);
+     }
+     }.observes('listLoading'),
 
-    isResponsive: function() {
-        return this.get('ad_width') === 'auto';
-    }.property('ad_width'),
+     isResponsive: function() {
+     return this.get('ad_width') === 'auto';
+     }.property('ad_width'),*/
 
     checkTrustLevels: function() {
         return !((currentUser) && (currentUser.get('trust_level') > Discourse.SiteSettings.adtech_through_trust_level));
