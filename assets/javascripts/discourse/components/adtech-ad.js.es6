@@ -13,13 +13,13 @@ var banner_post_bottom = Discourse.SiteSettings.adtech_post_bottom_code;
 const mobileView = Discourse.Site.currentProp('mobileView');
 
 function loadAdtech() {
-    if (_loaded) {
+    /*if (_loaded) {
         return Ember.RSVP.resolve();
     }
 
     if (_promise) {
         return _promise;
-    }
+    }*/
 
     if (typeof ADTECH !== 'undefined') { //we check if ADTECH var is defined (and not removed by Adblock)
         _promise = ADTECH.executeQueue();
@@ -28,6 +28,19 @@ function loadAdtech() {
 
     return _promise;
 }
+
+function changePage() {
+    loadAdtech();
+}
+
+function oldPluginCode() {
+    PageTracker.current().on('change', changePage);
+}
+
+function watchPageChanges(api) {
+    api.onPageChange(changePage);
+}
+withPluginApi('0.1', watchPageChanges, { noApi: oldPluginCode });
 
 var data = {
     "topic-list-top" : {},
@@ -68,19 +81,21 @@ export default Ember.Component.extend({
         this._super();
     },
 
-    _triggerAds() {
+    /*_triggerAds() {
         this.set('adRequested', true);
         loadAdtech();
-    },
+    },*/
 
     didInsertElement() {
         /*this._super();
 
         if (!this.get('showAd')) { return; }
 
-        if (this.get('listLoading')) { return; }*/
+        if (this.get('listLoading')) { return; }
 
-        Ember.run.scheduleOnce('afterRender', this, this._triggerAds);
+        Ember.run.scheduleOnce('afterRender', this, this._triggerAds);*/
+
+        loadAdtech();
     },
 
     /*waitForLoad: function() {
