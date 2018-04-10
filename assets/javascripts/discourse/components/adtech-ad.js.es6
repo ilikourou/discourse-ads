@@ -2,7 +2,8 @@ import loadScript from 'discourse/lib/load-script';
 
 var _loaded = false,
     _promise = null,
-    currentUser = Discourse.User.current();
+    currentUser = Discourse.User.current(),
+    _ad_code = null;
 
 var banner_category_top = Discourse.SiteSettings.adtech_category_top_code;
 var banner_post_top = Discourse.SiteSettings.adtech_post_top_code;
@@ -70,11 +71,10 @@ export default Ember.Component.extend({
 
     _triggerAds() {
         this.set('adRequested', true);
-        loadAdtech().then(function() {
+        loadAdtech();
             if (typeof ADTECH !== 'undefined') {
-                ADTECH.loadAd(Number(get('ad_code')));
+                ADTECH.loadAd(Number(this.get('ad_code')));
             }
-        });
     },
 
     didInsertElement() {
