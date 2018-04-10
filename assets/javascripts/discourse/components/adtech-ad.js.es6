@@ -21,7 +21,7 @@ function loadAdtech() {
         return _promise;
     }
 
-    var adtechSrc = (('https:' === document.location.protocol) ? 'https:' : 'http:') + 'aka-cdn-ns.adtech.de/dt/common/DAC.js';
+    var adtechSrc = (('https:' === document.location.protocol) ? 'https:' : 'http:') + '//aka-cdn-ns.adtech.de/dt/common/DAC.js';
     _promise = loadScript(adtechSrc, { scriptTag: true }).then(function() {
         _loaded = true;
     });
