@@ -72,7 +72,7 @@ export default Ember.Component.extend({
         this.set('adRequested', true);
         loadAdtech().then(function() {
             if (typeof ADTECH !== 'undefined') {
-                ADTECH.loadAd(Number(data[self.placement]["ad_code"]));
+                ADTECH.loadAd(Number(this.get('ad_code')));
             }
         });
     },
