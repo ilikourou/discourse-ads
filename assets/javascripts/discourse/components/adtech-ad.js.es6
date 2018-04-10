@@ -21,10 +21,10 @@ function loadAdtech() {
         return _promise;
     }
 
-    if (typeof ADTECH !== 'undefined') { //we check if ADTECH var is defined (and not removed by Adblock)
-        _promise = ADTECH.executeQueue();
+    var adtechSrc = (('https:' === document.location.protocol) ? 'https:' : 'http:') + 'aka-cdn-ns.adtech.de/dt/common/DAC.js';
+    _promise = loadScript(adtechSrc, { scriptTag: true }).then(function() {
         _loaded = true;
-    }
+    });
 
     return _promise;
 }
@@ -62,15 +62,19 @@ export default Ember.Component.extend({
 
     init() {
         this.set('ad_code', data[this.placement]["ad_code"] );
-        if (typeof ADTECH !== 'undefined') { //we check if ADTECH var is defined (and not removed by Adblock)
+        /*if (typeof ADTECH !== 'undefined') { //we check if ADTECH var is defined (and not removed by Adblock)
             ADTECH.enqueueAd(Number(data[this.placement]["ad_code"]));
-        }
+        }*/
         this._super();
     },
 
     _triggerAds() {
         this.set('adRequested', true);
-        loadAdtech();
+        loadAdtech().then(function() {
+            if (typeof ADTECH !== 'undefined') {
+                ADTECH.loadAd(Number(data[this.placement]["ad_code"]));
+            }
+        });
     },
 
     didInsertElement() {
