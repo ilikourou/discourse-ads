@@ -1,8 +1,8 @@
-# name: discourse-adplugin
-# about: Ad Plugin for Discourse
-# version: 1.0.2
+# name: discourse-ads
+# about: Customised Ad Plugin for Discourse
+# version: 1.1.0
 # authors: Vi and Sarah (@ladydanger and @cyberkoi)
-# url: https://github.com/discourse/discourse-adplugin
+# url: https://github.com/ilikourou/discourse-ads
 
 register_css <<CSS
 
