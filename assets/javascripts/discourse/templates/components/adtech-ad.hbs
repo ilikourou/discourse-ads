@@ -1,22 +1,21 @@
 {{#if checkTrustLevels}}
     <div class="smartad-content">
 
-        <div id="sas_{{ad_code}}" class="banner300" style="text-align:center; margin:20px 0; clear:both;">
-
+            <script type="application/javascript" src="https://ced.sascdn.com/tag/3433/smart.js" async></script>
+            <div id="sas_{{ad_code}}" class="banner300" style="text-align:center; margin:20px 0; clear:both;"></div>
             <script type="application/javascript">
-                sas.call("std", {
-                    siteId:		304768,	//
-                    pageId:		1109120,	// Page : Rocking.gr/rocking.gr_ros
-                    formatId: 	{{ad_code}},	// Format : 300x250_1 300x250
-                    target:		''	// Targeting
-                });
+                var sas = sas || {};
+                sas.cmd = sas.cmd || [];
+                sas.cmd.push(
+                    function () {
+                        sas.call(
+                            { siteId: 304768, pageId: 1109120, formatId: {{ad_code}}, tagId: "sas_"{{ad_code}} },
+                            { networkId: 3433, domain: "https://www8.smartadserver.com" /*, onNoad: function() {} */ }
+                        );
+                    }
+                );
             </script>
-            <noscript>
-                <a href="https://www8.smartadserver.com/ac?jump=1&nwid=3433&siteid=304768&pgname=rocking.gr_ros&fmtid={{ad_code}}&visit=m&tmstp=[timestamp]&out=nonrich" target="_blank">
-                    <img src="https://www8.smartadserver.com/ac?out=nonrich&nwid=3433&siteid=304768&pgname=rocking.gr_ros&fmtid={{ad_code}}&visit=m&tmstp=[timestamp]" border="0" alt="" /></a>
-            </noscript>
 
-        </div>
 
     </div>
 {{/if}}
